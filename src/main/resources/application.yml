@@ -1,0 +1,14 @@
+spring: #profil par défaut
+ sql:
+    init:
+      mode: always #pour prendre le data.sql
+ jpa:
+    show-sql: true # configaration Hibernate afin qu'il montre les instruction SQL executées
+    hibernate:
+     ddl-auto: create-drop
+    defer-datasource-initialization: true #pour prendre le data.sql
+   
+ datasource:
+    url: jdbc:postgresql:media #nom de ma base est "mediatheque"
+    username: postgres
+    password: postgres
