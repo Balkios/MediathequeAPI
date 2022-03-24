@@ -19,11 +19,11 @@ public class EmprunteController {
 	
 	
 	// effectuer une emprunte
-//	@PostMapping("/")
-//	public Emprunte CreateEmprunte(@RequestBody Emprunte e) {
-//		Emprunte emp = emprunteService.effectuerEmprunte(e.getIdMembre(), e.getIdDocument());
-//		return emp;
-//	}
+	@PostMapping("/")
+	public Emprunte CreateEmprunte(@RequestBody Emprunte e) {
+		Emprunte emp = emprunteService.effectuerEmprunte(e.getIdMembre(), e.getIdDocument());
+		return emp;
+	}
 	
 	
 

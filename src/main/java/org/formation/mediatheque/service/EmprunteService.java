@@ -26,22 +26,22 @@ public class EmprunteService {
 	
 	
 	//effectuer une emprunte
-//	public Emprunte effectuerEmprunte(long idMembre, long idDocument) {
-//		
-//		Membre  m= membreRepository.findById(idMembre).get();
-//		
-//		Document d =documentRepository.findById(idDocument).get();
-//		d.setNbreExemplaires(d.getNbreExemplaires()-1);
-//		Emprunte e=new Emprunte();
-//		e.setDateCreation(new Date());
-//		e.setDocument(d);
-//		e.setMembre(m);
-//		e.setDateRetour(new Date(new Date().getTime()+1000*60*60*24*7));// ajouter 7 jours pour la per
-//		
-//		
-//		return emprunteRepository.save(e);
-//		
-//		
-//	}
+	public Emprunte effectuerEmprunte(long idMembre, long idDocument) {
+		
+		Membre  m= membreRepository.findById(idMembre).get();
+		
+		Document d =documentRepository.findById(idDocument).get();
+		d.setNbreExemplaires(d.getNbreExemplaires()-1);
+		Emprunte e=new Emprunte();
+		e.setDateCreation(new Date());
+		e.setDocument(d);
+		e.setMembre(m);
+		e.setDateRetour(new Date(new Date().getTime()+1000*60*60*24*7));// ajouter 7 jours pour la per
+		
+		
+		return emprunteRepository.save(e);
+		
+		
+	}
 
 }

@@ -40,6 +40,8 @@ public class Document implements Serializable {
 	@OneToMany(mappedBy = "document")
 	private Set<Emprunte> empruntes= new HashSet<Emprunte>();
 	
+	//Document('CD1', 3, '1987-08-15',true)
+	
 	
 
 }
