@@ -21,13 +21,10 @@ public interface DocumentRepository extends JpaRepository<Document, Long> {
 	@Query("select d from Document d where d.nbreExemplaires >0 and d.dateParution > ?1")
 	public List<Document> findDocumentDisponibleByDateParution(Date date);
 	
-	// modfier dispo en non dispo ==> ça sera une emprunte
-//	@Query("update Document d set d.disponible=?1 where d.id=?2")
-//	public void modificationDisponibleById(boolean disponible, long idDocument);
 
-	// restituer une emprunte
-//		@Modifying // modification de base car on utilse update oe delete 
-//		@javax.transaction.Transactional
-//		@Query("update Document d set d.nbreExemplaires=breExemplaires+1 where s.id=?1")
-//		public void RestituerDocumentById(long id);
+	// restituer l'emprunte ==> le document est retourné
+	@Modifying // modification de base car on utilse update oe delete 
+	@javax.transaction.Transactional
+	@Query("update Document d set d.nbreExemplaires =d.nbreExemplaires +1 where d.id=?1")
+	public void restituerDocumentById(long id);
 }

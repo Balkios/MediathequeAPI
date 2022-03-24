@@ -12,6 +12,6 @@ public interface EmprunteRepository extends JpaRepository<Emprunte, Long> {
 	
 	
 	//ReadALL empruntes
-	//public List<Emprunte> findByMembreId(long idMembre);
+	public List<Emprunte> findByMembreId(long idMembre);
 
 }

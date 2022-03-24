@@ -6,16 +6,27 @@ import java.util.Date;
 import java.util.List;
 
 import org.formation.mediatheque.model.Document;
+import org.formation.mediatheque.model.Emprunte;
+import org.formation.mediatheque.service.EmprunteService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
+
+//@SpringBootTest // demarre toute l'apli
+@DataJpaTest // demarre que c'est nec essaire pour le test
 public class DocumentRepositoryTests {
 	
 	
 	@Autowired
 	DocumentRepository documentRepository;
+	
+	@Autowired
+	EmprunteRepository emprunteRepository;
+	
+	@Autowired
+	EmprunteService emprunteService;
 	
 	
 	@Test
@@ -50,6 +61,12 @@ public class DocumentRepositoryTests {
 		assertEquals(nbreNewDocDispo, documentRepository.findDocumentDisponibleByDateParution(date).size());
 		
 	}
+//	@Test
+//	void testRestituerDocumentById() {
+//		Emprunte e =emprunteService.effectuerEmprunte(1, 1);
+//		System.out.println("eeeeeeeeeeeeeeeeeeeee        "+e);
+//		
+//	}
 	
 
 
