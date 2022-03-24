@@ -12,16 +12,19 @@ import org.springframework.stereotype.Repository;
 public interface DocumentRepository extends JpaRepository<Document, Long> {
 	
 	// ReadALL dispo
-	@Query("select d from Document d where d.disponible =?1")
-	public List<Document> findDocumentByDisponible(boolean disponible);
+	@Query("select d from Document d where d.nbreExemplaires >0")
+	public List<Document> findDocumentDisponible();
 	
 	
 	//ReadALL dispo et new 
-	@Query("select d from Document d where d.disponible =?2 and d.dateParution > ?1")
-	public List<Document> findDocumentByDateParutionAndDisponible(Date date,boolean disponible);
+	@Query("select d from Document d where d.nbreExemplaires >0 and d.dateParution > ?1")
+	public List<Document> findDocumentByDateDisponibleParution(Date date);
 	
 	// modfier dispo en non dispo ==> ça sera une emprunte
 //	@Query("update Document d set d.disponible=?1 where d.id=?2")
 //	public void modificationDisponibleById(boolean disponible, long idDocument);
 
+	// modfier dispo en non dispo ==> ça sera une emprunte
+		@Query("update Document d set d.nbreExemplaires=breExemplaires-1 ")
+		public void modificationNbreExemplaires();
 }

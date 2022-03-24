@@ -22,7 +22,7 @@ public class DocumentService {
 	
 	public List<Document> findAllDocumentDisponible() {
 		List<Document> ret =new ArrayList<>();
-		for(Document d : documentRepository.findDocumentByDisponible(true)) {
+		for(Document d : documentRepository.findDocumentDisponible()) {
 			ret.add(d);
 		}
 		return ret;
@@ -37,7 +37,7 @@ public class DocumentService {
 		
 		case "cd" : {
 			List<Document> ret =new ArrayList<>();
-			for(Document d : documentRepository.findDocumentByDateParutionAndDisponible(currenteDate,true)) {
+			for(Document d : documentRepository.findDocumentByDateDisponibleParution(currenteDate)) {
 				if(d instanceof Cd)
 				ret.add(d);
 			}
@@ -47,7 +47,7 @@ public class DocumentService {
 		
 		case "dvd" : {
 			List<Document> ret =new ArrayList<>();
-			for(Document d : documentRepository.findDocumentByDateParutionAndDisponible(currenteDate,true)) {
+			for(Document d : documentRepository.findDocumentByDateDisponibleParution(currenteDate)) {
 				if(d instanceof Dvd)
 				ret.add(d);
 			}
@@ -56,7 +56,7 @@ public class DocumentService {
 		}
 		case "livre" : {
 			List<Document> ret =new ArrayList<>();
-			for(Document d : documentRepository.findDocumentByDateParutionAndDisponible(currenteDate,true)) {
+			for(Document d : documentRepository.findDocumentByDateDisponibleParution(currenteDate)) {
 				if(d instanceof Livre)
 				ret.add(d);
 			}
@@ -64,7 +64,7 @@ public class DocumentService {
 				
 		}
 		default:
-			return documentRepository.findDocumentByDateParutionAndDisponible(currenteDate, true);
+			return documentRepository.findDocumentByDateDisponibleParution(currenteDate);
 		}
 		
 		

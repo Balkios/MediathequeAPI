@@ -10,6 +10,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 import org.hibernate.annotations.ManyToAny;
 
@@ -34,6 +35,12 @@ public class Emprunte {
 	
 	@Temporal(TemporalType.DATE)
 	private Date dateRetour;
+	
+	@Transient // non mappé dans la base 
+	private long idMembre;
+	
+	@Transient
+	private long idDocument;
 	
 	
 	
