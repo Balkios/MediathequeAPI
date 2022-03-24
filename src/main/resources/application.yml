@@ -1,4 +1,8 @@
 spring: #profil par défaut
+ jackson:
+    mapper:
+      default-view-inclusion : false
+
  sql:
     init:
       mode: always #pour prendre le data.sql

@@ -35,4 +35,9 @@ insert into LIVRE (ECRIVAIN, NUMERO_ISBN, ID) values ('ecrivain2', 150,6);
 insert into LIVRE (ECRIVAIN, NUMERO_ISBN, ID) values ('ecrivain3', 1558,7);
 
 
+insert into emprunte (date_creation, date_retour , document_id , membre_id) values ('2022-03-22','2022-03-29',1,1);
+insert into emprunte (date_creation, date_retour , document_id , membre_id) values ('2022-03-22','2022-03-29',2,1);
+insert into emprunte (date_creation, date_retour , document_id , membre_id) values ('2022-03-22','2022-03-29',3,1);
+
+
 

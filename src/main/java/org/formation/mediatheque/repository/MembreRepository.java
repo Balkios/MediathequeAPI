@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface MembreRepository extends JpaRepository<Membre, Long> {
 	
-	//authentif
-	//public Membre FindByEmailAndPassword(String email, String password);
+	//authentif 
+	public Membre findByEmailAndPassword(String email, String password);
 
 }

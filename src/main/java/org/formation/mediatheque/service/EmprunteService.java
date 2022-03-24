@@ -17,7 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
-@Transactional // deux operation persistence ==> commit et rollback 
+//@Transactional // deux operation persistence ==> commit et rollback 
 @Service
 public class EmprunteService {
 	
@@ -43,7 +43,7 @@ public class EmprunteService {
 			e.setDocument(d);
 			e.setMembre(m);
 			e.setDateRetour(new Date(new Date().getTime()+1000*60*60*24*7));// ajouter 7 jours (datedeRetour)
-			documentRepository.save(d);
+			//documentRepository.save(d);
 			
 			return emprunteRepository.save(e);
 		}
@@ -58,33 +58,15 @@ public class EmprunteService {
 	// restituer une emprunte
 	public void supprimeEmprunte(long idEmprunte) {
 		Optional<Emprunte> e = emprunteRepository.findById(idEmprunte);
-		emprunteRepository.deleteById(idEmprunte);
+		emprunteRepository.deleteById(e.get().getId());
 		documentRepository.restituerDocumentById(e.get().getDocument().getId());
 	}
-	//Read All empruntes de mebre
-	public List<Emprunte> findAllEmprunteByMembre(Membre membre){
-		return emprunteRepository.findAll();
+	//Read All empruntes de membre par son id 
+	public List<Emprunte> findAllEmprunteByIdMembre(long id){
+		return emprunteRepository.findByMembreId(id);
 	}
 	
 	
-	//public Emprunte effectuerEmprunte(long idMembre, long idDocument)  {
-//	Emprunte e=new Emprunte();
-//		Membre  m= membreRepository.findById(idMembre).get();
-//		if(m.getEmprunte().size()<3) {
-//			Document d =documentRepository.findById(idDocument).get();
-//			d.setNbreExemplaires(d.getNbreExemplaires()-1);
-//			
-//			e.setDateCreation(new Date());
-//			e.setDocument(d);
-//			e.setMembre(m);
-//			e.setDateRetour(new Date(new Date().getTime()+1000*60*60*24*7));// ajouter 7 jours (datedeRetour)
-//			
-//			
-//			
-//		}
-//		return emprunteRepository.save(e);
-//		
-//		
-//	}
+
 
 }
