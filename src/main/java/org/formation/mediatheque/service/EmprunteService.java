@@ -34,21 +34,24 @@ public class EmprunteService {
 	//effectuer une emprunte et ne pas depasser 3 par membre 
 	public Emprunte effectuerEmprunte(long idMembre, long idDocument) throws SizeEmprunteException {
 		
-		Membre  m= membreRepository.findById(idMembre).get();
+		Membre m= membreRepository.findById(idMembre).get();// Optional<Membre>
+		System.out.println( " nbre emrunte de ce membre "+m.getEmprunte().size());
 		if(m.getEmprunte().size()<3) {
-			Document d =documentRepository.findById(idDocument).get();
-			d.setNbreExemplaires(d.getNbreExemplaires()-1);
-			Emprunte e=new Emprunte();
-			e.setDateCreation(new Date());
-			e.setDocument(d);
-			e.setMembre(m);
-			e.setDateRetour(new Date(new Date().getTime()+1000*60*60*24*7));// ajouter 7 jours (datedeRetour)
-			//documentRepository.save(d);
-			
-			return emprunteRepository.save(e);
-		}
-		throw new SizeEmprunteException();
+		Document d= documentRepository.findById(idDocument).get();
+		d.setDisponible(false);
+		d.setNbreExemplaires(d.getNbreExemplaires()-1);
+		Emprunte e=new Emprunte();
+		e.setDateCreation(new Date());
+		e.setDocument(d);
+		e.setMembre(m);
+		e.setDateRetour(new Date(new Date().getTime()+1000*60*60*24*7));
 		
+		
+		return emprunteRepository.save(e);
+		}
+		 throw new SizeEmprunteException();
+		 
+	
 		
 	}
 	

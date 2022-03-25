@@ -49,6 +49,27 @@ public class Membre {
 	@Size(max = 3, min = 1)
 	@JsonIgnore
 	private Set<Emprunte> emprunte = new HashSet<Emprunte>();
+//	@Override
+//	public int hashCode() {// code bas niveau // si on veut modifier methode equals il faut modifier la méthode hashCode
+//		final int prime = 31;
+//		int result = 1;
+//		result = prime * result + (int) (id ^ (id >>> 32));
+//		return result;
+//	}
+//
+//	@Override
+//	public boolean equals(Object obj) {// true si les objets sont égaux 
+//		if (this == obj)
+//			return true;
+//		if (obj == null)
+//			return false;
+//		if (getClass() != obj.getClass())
+//			return false;
+//		Membre other = (Membre) obj;
+//		if (id != other.id)
+//			return false;
+//		return true;
+//	}
 
 	public Membre(@NotNull String email, @NotNull String motDePasse, String nom, String prenom) {
 		//super();

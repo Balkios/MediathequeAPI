@@ -6,6 +6,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -47,7 +48,7 @@ public class Document implements Serializable {
 	private boolean disponible;// ajouter pour faciliter le seclect de document disponible 
 	
 	
-	@OneToMany(mappedBy = "document")
+	@OneToMany(mappedBy = "document" , fetch = FetchType.LAZY)
 	@JsonIgnore
 	private Set<Emprunte> empruntes= new HashSet<Emprunte>();
 	
