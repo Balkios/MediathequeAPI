@@ -6,8 +6,8 @@ import java.util.Date;
 import java.util.List;
 
 import org.formation.mediatheque.model.Document;
-import org.formation.mediatheque.model.Emprunte;
-import org.formation.mediatheque.service.EmprunteService;
+import org.formation.mediatheque.model.Emprunt;
+import org.formation.mediatheque.service.EmpruntService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -23,10 +23,10 @@ public class DocumentRepositoryTests {
 	DocumentRepository documentRepository;
 	
 	@Autowired
-	EmprunteRepository emprunteRepository;
+	EmpruntRepository emprunteRepository;
 	
 	@Autowired
-	EmprunteService emprunteService;
+	EmpruntService emprunteService;
 	
 	
 	@Test

@@ -27,7 +27,7 @@ public class UserController {
 	MembreService membreService;
 	
 	
-	@GetMapping()
+	@GetMapping("/login")
 	public Authentication displayUser() {
 		
 		return SecurityContextHolder.getContext().getAuthentication();

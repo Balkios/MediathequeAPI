@@ -13,7 +13,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
-import org.formation.mediatheque.json.EmprunteViews;
+import org.formation.mediatheque.json.EmpruntViews;
 import org.hibernate.annotations.ManyToAny;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -23,16 +23,16 @@ import lombok.Data;
 
 @Entity
 @Data
-public class Emprunte {
+public class Emprunt {
 	
 	
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-	@JsonView(EmprunteViews.EmprunteByMembreView.class)
+	@JsonView(EmpruntViews.EmprunteByMembreView.class)
 	private long id;
 	
 	@ManyToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name="document_id") // clé étranger 
-	@JsonView(EmprunteViews.EmprunteByMembreView.class)
+	@JsonView(EmpruntViews.EmprunteByMembreView.class)
 	private Document document;
 	
 	@ManyToOne
@@ -41,19 +41,19 @@ public class Emprunte {
 	private Membre membre;
 	
 	@Temporal(TemporalType.DATE)
-	@JsonView(EmprunteViews.EmprunteByMembreView.class)
+	@JsonView(EmpruntViews.EmprunteByMembreView.class)
 	private Date dateCreation;
 	
 	@Temporal(TemporalType.DATE)
-	@JsonView(EmprunteViews.EmprunteByMembreView.class)
+	@JsonView(EmpruntViews.EmprunteByMembreView.class)
 	private Date dateRetour;
 	
 	@Transient // non mappé dans la base 
-	@JsonView(EmprunteViews.EmprunteView.class)
+	@JsonView(EmpruntViews.EmprunteView.class)
 	private long idMembre;
 	
 	@Transient
-	@JsonView(EmprunteViews.EmprunteView.class)
+	@JsonView(EmpruntViews.EmprunteView.class)
 	private long idDocument;
 	
 	

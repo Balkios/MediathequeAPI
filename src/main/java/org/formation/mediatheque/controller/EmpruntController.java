@@ -2,11 +2,11 @@ package org.formation.mediatheque.controller;
 
 import java.util.List;
 
-import org.formation.mediatheque.exceptions.SizeEmprunteException;
-import org.formation.mediatheque.json.EmprunteViews;
-import org.formation.mediatheque.model.Emprunte;
-import org.formation.mediatheque.repository.EmprunteRepository;
-import org.formation.mediatheque.service.EmprunteService;
+import org.formation.mediatheque.exceptions.SizeEmpruntException;
+import org.formation.mediatheque.json.EmpruntViews;
+import org.formation.mediatheque.model.Emprunt;
+import org.formation.mediatheque.repository.EmpruntRepository;
+import org.formation.mediatheque.service.EmpruntService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,16 +23,16 @@ import com.fasterxml.jackson.annotation.JsonView;
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/api/empruntes")
-public class EmprunteController {
+public class EmpruntController {
 	
 	@Autowired
-	EmprunteService emprunteService;
+	EmpruntService emprunteService;
 	
 	
 	
 	// effectuer une emprunte
 	@PostMapping("/")
-	public Emprunte createEmprunte(@RequestBody @JsonView(EmprunteViews.EmprunteView.class) Emprunte e)throws SizeEmprunteException {
+	public Emprunt createEmprunte(@RequestBody @JsonView(EmpruntViews.EmprunteView.class) Emprunt e)throws SizeEmpruntException {
 		//Emprunte emp =  emprunteService.effectuerEmprunte(e.getIdMembre(), e.getIdDocument());
 		return  emprunteService.effectuerEmprunte(e.getIdMembre(), e.getIdDocument());
 	}
@@ -53,8 +53,8 @@ public class EmprunteController {
 	
 	//ReadALL emprunte
 	@GetMapping("/membre/{idMembre}")
-	@JsonView(EmprunteViews.EmprunteByMembreView.class)
-	public List<Emprunte> findEmprunteByMembreId(@PathVariable Long idMembre){
+	@JsonView(EmpruntViews.EmprunteByMembreView.class)
+	public List<Emprunt> findEmprunteByMembreId(@PathVariable Long idMembre){
 		return emprunteService.findAllEmprunteByIdMembre(idMembre);
 	}
 

@@ -44,13 +44,13 @@ public class Document implements Serializable {
 	@JsonView(DocumentViews.DocumentView.class)
 	private Date dateParution;
 	
-	@JsonView(DocumentViews.DocumentView.class)
+	//@JsonView(DocumentViews.DocumentView.class)
 	private boolean disponible;// ajouter pour faciliter le seclect de document disponible 
 	
 	
 	@OneToMany(mappedBy = "document" , fetch = FetchType.LAZY)
 	@JsonIgnore
-	private Set<Emprunte> empruntes= new HashSet<Emprunte>();
+	private Set<Emprunt> empruntes= new HashSet<Emprunt>();
 	
 	//Document('CD1', 3, '1987-08-15',true)
 	
