@@ -15,6 +15,7 @@ import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 import org.formation.mediatheque.json.DocumentViews;
 
@@ -51,6 +52,9 @@ public class Document implements Serializable {
 	@OneToMany(mappedBy = "document" , fetch = FetchType.LAZY)
 	@JsonIgnore
 	private Set<Emprunt> empruntes= new HashSet<Emprunt>();
+	
+	@Transient
+	private String nature;
 	
 	//Document('CD1', 3, '1987-08-15',true)
 	

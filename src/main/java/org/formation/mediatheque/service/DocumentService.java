@@ -23,6 +23,7 @@ public class DocumentService {
 	public List<Document> findAllDocumentDisponible() {
 		List<Document> ret =new ArrayList<>();
 		for(Document d : documentRepository.findDocumentDisponible()) {
+			d.setNature(d instanceof Dvd? "dvd":d instanceof Cd? "cd":"livre" );
 			ret.add(d);
 		}
 		return ret;

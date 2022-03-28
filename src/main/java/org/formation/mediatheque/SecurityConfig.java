@@ -34,8 +34,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers("/swagger-ui.html", "/swagger-ui/index.html", "/v3/api-docs/**","/api/**").permitAll() // permession
 				//.antMatchers(HttpMethod.GET).permitAll()		
 				//.antMatchers(HttpMethod.POST).permitAll()	// pour
-				.antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
-																							// swager
+				
+				//.antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+				.antMatchers(HttpMethod.POST, "/api/emprunts").authenticated()																		// swager
 				.anyRequest().authenticated()
 				
 				.and()
@@ -45,7 +46,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				//.formLogin().permitAll()//pour login
 				.and()
 				.logout().logoutUrl("/logout").invalidateHttpSession(true);//pour logout
-		
+	//	http.addFilterAfter(new CustomFilter(), BasicAuthenticationFilter.class);
 
 		
 
@@ -98,7 +99,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	//}
 
 
-
+//	@Bean
+//	@Override
+//	public AuthenticationManager authenticationManagerBean() throws Exception {
+//		// TODO Auto-generated method stub
+//		return super.authenticationManagerBean();
+//	}
 	
 	
 }
